@@ -1,0 +1,114 @@
+#include<iostream>
+
+
+using namespace std;
+
+
+
+void setZero(int[], int);
+void inputAlpha(int[], int);
+void doubleArray(int[], const int[], int);
+void copyGamma(int[][4], const int[]);
+void copyAlphaBeta(int[][4], const int[], const int[]);
+void inputArray(const int[], int);
+void setInStock(int[][4], const int[]);
+void printArray2(const int[][4], int, int);
+
+
+int main()
+{
+	int inStock[10][4];
+	int alpha[20];
+	int beta[20];
+	int gamma[4] = { 11, 13, 15, 17 };
+	int delta[10] = { 3, 5, 2, 6, 10, 9, 7, 11, 1,8 };
+
+	setZero(alpha, 20);
+	setZero(beta, 20);
+
+	inputAlpha(alpha, 20);
+	inputArray(alpha, 20);
+
+	copyGamma(inStock, gamma);
+	printArray2(inStock, 10, 4);
+
+	copyAlphaBeta(inStock, alpha, beta);
+	printArray2(inStock, 10, 4);
+
+	setInStock(inStock, delta);
+	printArray2(inStock, 10, 4);
+
+	cin.get(), cin.get();
+	return 0;
+}
+
+void setZero(int myArray[], int size)
+{
+	for (int i = 0; i < size; ++i)
+		myArray[i] = 0;
+}
+
+void inputAlpha(int myAlpha[], int size)
+{
+	cout << "Please enter 20 integers :" << endl << endl;
+
+	for (int i = 0; i < size; ++i)
+		cin >> myAlpha[i];
+}
+
+void doubleArray(int myBeta[], const int myAlpha[], int size)
+{
+	for (int i = 0; i < size; ++i)
+		myBeta[i] = 2 * myAlpha[i];
+}
+
+void copyGamma(int myStock[][4], const int myGamma[])
+{
+	for (int i = 0; i < 4; ++i)
+		myStock[0][i] = myGamma[i];
+
+	for (int i = 0; i < 10; ++i)
+		for (int j = 0; j < 4; ++j)
+			myStock[i][j] = 3 * myStock[i - 1][j];
+}
+
+void copyAlphaBeta(int myStock[][4], const int myAlpha[], const int myBeta[])
+{
+	for (int i = 0; i < 20; ++i)
+		myStock[i / 4][i % 4] = myBeta[i];
+}
+
+void inputArray(const int myArray[], int size)
+{
+	int i = 0;
+	while (i < size)
+	{
+		cout << myArray[i] << ", ";
+		++i;
+
+		if (i % 15 == 0)
+			cout << endl;
+	}
+}
+
+void setInStock(int myStock[][4], const int myDelta[])
+{
+	cout << "\n\n\n\Please enter first column :" << endl;
+
+	for (int i = 0; i < 4; ++i)
+		cin >> myStock[i][0];
+
+	for (int i = 0; i < 4; ++i)
+		for (int j = 1; j < 10; ++j)
+			myStock[i][j] = 2 * myStock[i][j - 1] - myDelta[i];
+}
+
+void printArray2(const int myArray[][4], int r, int c)
+{
+	for (int i = 0; i < r; ++i)
+	{
+		for (int j = 0; j < c; ++j)
+			cout << myArray[i][j] << "\t";
+		cout << endl;
+	}
+}
