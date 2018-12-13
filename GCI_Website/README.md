@@ -1,0 +1,1 @@
+These are the UI and requirements for the tasks on the GCI website. Although I only officially did two of these (Home Page and Mentor Page), I worked on the other pages as well and had some suggestions for more but did not get a chance to submit my work for review. All UI designs are included in this repo. Feel free to leave suggestions, I'd be happy to hear them.
